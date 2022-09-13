@@ -104,12 +104,14 @@ let removeItem = (id) => {
   localStorage.setItem("data", JSON.stringify(basket));
   generateCartItems();
   TotalAmount();
+  calculation();
 };
 
 let cleartCart = () => {
   basket = [];
   generateCartItems();
   localStorage.setItem("data", JSON.stringify(basket));
+  calculation();
 };
 
 let TotalAmount = () => {
