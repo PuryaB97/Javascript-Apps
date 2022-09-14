@@ -15,6 +15,25 @@ class UI {
     this.itemList = [];
     this.itemID = 0;
   }
+
+  // submit budget method
+  submitBudgetForm() {
+    const value = this.budgetInput.value;
+    if (value === "" || value < 0) {
+      this.budgetFeedback.classList.add("showItem");
+      this.budgetFeedback.innerHTML = `<p>value cannot be empty or negative</p>`;
+      setTimeout(() => {
+        this.budgetFeedback.classList.remove("showItem");
+      }, 2000);
+    } else {
+      this.budgetAmount.textContent = value;
+      this.budgetInput.value = "";
+      this.showBalance();
+    }
+  }
+
+  // show balance
+  showBalance() {}
 }
 
 function eventListeners() {
@@ -26,7 +45,18 @@ function eventListeners() {
   const ui = new UI();
 
   // budget form submit
-  budgetForm.addEventListener("submit", function (event) {});
+  budgetForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+    ui.submitBudgetForm();
+  });
+
+  // expence form submit
+  expenceForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+  });
+
+  // expence clic
+  expenceList.addEventListener("click", function () {});
 }
 
 document.addEventListener("DOMContentLoaded", function () {
