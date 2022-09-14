@@ -24,6 +24,9 @@ function eventListeners() {
 
   // new instance of UI Class
   const ui = new UI();
+
+  // budget form submit
+  budgetForm.addEventListener("submit", function (event) {});
 }
 
 document.addEventListener("DOMContentLoaded", function () {

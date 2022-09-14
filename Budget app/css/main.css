@@ -29,11 +29,13 @@ body {
   background: transparent;
   border: 0.1rem solid var(--mainGreen);
   color: var(--mainGreen);
+  margin-top: 10px;
 }
 .expense-submit {
   background: transparent;
   border: 0.1rem solid var(--mainRed);
   color: var(--mainRed);
+  margin-top: 10px;
 }
 .expense-submit:hover {
   background: var(--mainRed);
