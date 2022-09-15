@@ -108,7 +108,11 @@ class UI {
     let total = 0;
 
     if (this.itemList.length > 0) {
-      total = this.itemList;
+      total = this.itemList.reduce((acc, curr) => {
+        acc += curr.amount;
+
+        return acc;
+      }, 0);
     }
     this.expenseAmount.textContent = total;
     return total;
