@@ -33,7 +33,27 @@ class UI {
   }
 
   // show balance
-  showBalance() {}
+  showBalance() {
+    const expence = this.totalExpence();
+    const total = parseInt(this.budgetAmount.textContent) - expence;
+    this.balanceAmount.textContent = total;
+    if (total < 0) {
+      this.balance.classList.remove("showGreen", "showBlack");
+      this.balance.classList.add("showRed");
+    } else if (total > 0) {
+      this.balance.classList.remove("showRed", "showBlack");
+      this.balance.classList.add("showGreen");
+    } else if (total === 0) {
+      this.balance.classList.remove("showRed", "showGreen");
+      this.balance.classList.add("showBlack");
+    }
+  }
+
+  // total expence
+  totalExpence() {
+    let total = 400;
+    return total;
+  }
 }
 
 function eventListeners() {
