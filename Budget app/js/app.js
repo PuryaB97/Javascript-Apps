@@ -49,6 +49,35 @@ class UI {
     }
   }
 
+  // submit expence form
+  submitExpenseForm() {
+    const expenseValue = this.expenseInput.value;
+    const amountValue = this.amountInput.value;
+
+    if (expenseValue === "" || amountValue === "" || amountValue < 0) {
+      this.expenseFeedback.classList.add("showItem");
+      this.expenseFeedback.innerHTML = `<p>values cannot be empty or negative</p>`;
+      setTimeout(() => {
+        this.expenseFeedback.classList.remove("showItem");
+      }, 2000);
+    } else {
+      let amount = parseInt(amountValue);
+      this.expenseInput = "";
+      this.amountInput = "";
+      let expense = {
+        id: this.itemID,
+        title: expenseValue,
+        amount: amount,
+      };
+
+      this.itemID++;
+      this.itemList.push(expense);
+      this.addExpense(expense);
+
+      // show balance
+    }
+  }
+
   // total expence
   totalExpence() {
     let total = 400;
@@ -58,8 +87,8 @@ class UI {
 
 function eventListeners() {
   const budgetForm = document.getElementById("budget-form");
-  const expenceForm = document.getElementById("expence-form");
-  const expenceList = document.getElementById("expence-list");
+  const expenseForm = document.getElementById("expense-form");
+  const expenseList = document.getElementById("expense-list");
 
   // new instance of UI Class
   const ui = new UI();
@@ -70,13 +99,14 @@ function eventListeners() {
     ui.submitBudgetForm();
   });
 
-  // expence form submit
-  expenceForm.addEventListener("submit", function (event) {
+  // expense form submit
+  expenseForm.addEventListener("submit", function (event) {
     event.preventDefault();
+    ui.submitExpenseForm();
   });
 
   // expence clic
-  expenceList.addEventListener("click", function () {});
+  expenseList.addEventListener("click", function () {});
 }
 
 document.addEventListener("DOMContentLoaded", function () {
