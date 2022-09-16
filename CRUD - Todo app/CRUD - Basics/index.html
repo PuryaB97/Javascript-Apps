@@ -23,6 +23,7 @@
           <br /><br />
           <textarea name="" id="input" cols="30" rows="10"></textarea>
           <br /><br />
+          <div id="msg"></div>
           <button type="submit">Post</button>
         </form>
       </div>
@@ -30,21 +31,29 @@
         <h3>Your post here</h3>
         <div id="posts">
           <div class="">
-            <p>Post 1</p>
+            <p>Lorem ipsum dolor sit amet.</p>
             <span class="options">
-              <i class="fa-sharp fa-solid fa-pen-to-square"></i>
-              <i class="fa-solid fa-trash-can"></i>
+              <i
+                class="fa-sharp fa-solid fa-pen-to-square"
+                onclick="editPost(this)"
+              ></i>
+              <i class="fa-solid fa-trash-can" onclick="deletePost(this)"></i>
             </span>
           </div>
           <div class="">
-            <p>Post 2</p>
+            <p>Lorem ipsum dolor sit amet..</p>
             <span class="options">
-              <i class="fa-sharp fa-solid fa-pen-to-square"></i>
-              <i class="fa-solid fa-trash-can"></i>
+              <i
+                class="fa-sharp fa-solid fa-pen-to-square"
+                onclick="editPost(this)"
+              ></i>
+              <i class="fa-solid fa-trash-can" onclick="deletePost(this)"></i>
             </span>
           </div>
         </div>
       </div>
     </div>
   </body>
+
+  <script src="main.js"></script>
 </html>
