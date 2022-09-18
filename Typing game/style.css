@@ -40,6 +40,7 @@ h1 {
 #header {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  margin: 20px 6px 30px;
 }
 
 #buttons {
@@ -57,4 +58,16 @@ button {
   padding: 5px 20px;
   border-radius: 4px;
   cursor: pointer;
+}
+
+div#game {
+  line-height: 35px;
+  height: 105px;
+  overflow: hidden;
+}
+
+div.word {
+  display: inline-block;
+  font-family: "Roboto Mono", monospace;
+  margin: 0 5px;
 }
