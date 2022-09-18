@@ -16,7 +16,8 @@ body {
   border-radius: 4px;
   padding: 15px;
   background-color: #fff;
-  overflow-y: scroll hidden;
+  overflow-y: scroll;
+  scrollbar-width: none;
 }
 
 .app::-webkit-scrollbar {
