@@ -4,6 +4,14 @@ const words =
   );
 const wordsCount = words.length;
 
+function addClass(el, name) {
+  el.className += " " + name;
+}
+
+function removeClass(el, name) {
+  el.className = el.className.replace(name, "");
+}
+
 function randomWord() {
   const randomIndex = Math.ceil(Math.random() * wordsCount);
   return words[randomIndex];
@@ -11,7 +19,7 @@ function randomWord() {
 
 function formatWord(word) {
   return `<div class="word"><span class="letter">${word
-    .split("")
+    ?.split("")
     .join("</span><span class='letter'>")}</span></div> `;
 }
 
@@ -20,6 +28,16 @@ function newGame() {
   for (let i = 0; i < 200; i++) {
     document.getElementById("words").innerHTML += formatWord(randomWord());
   }
+  addClass(document.querySelector(".word"), "current");
+  addClass(document.querySelector(".letter"), "current");
 }
+
+document.getElementById("game").addEventListener("keyup", (e) => {
+  const key = e.key;
+  const currentLetter = document.querySelector(".letter.current");
+  const expected = currentLetter.innerHTML;
+
+  console.log({ key, expected });
+});
 
 newGame();
