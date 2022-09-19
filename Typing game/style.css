@@ -67,6 +67,10 @@ div#game {
   position: relative;
 }
 
+div#game:focus {
+  outline: 0;
+}
+
 div.word {
   display: inline-block;
   font-family: "Roboto Mono", monospace;
@@ -118,7 +122,7 @@ div.word {
   height: 1.6rem;
   background: var(--primaryColor);
   position: fixed;
-  top: 250px;
+  top: 248px;
   left: 112px;
   animation: blink 0.8s infinite;
 }

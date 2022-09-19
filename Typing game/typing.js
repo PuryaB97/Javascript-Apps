@@ -14,7 +14,7 @@ function removeClass(el, name) {
 
 function randomWord() {
   const randomIndex = Math.ceil(Math.random() * wordsCount);
-  return words[randomIndex];
+  return words[randomIndex - 1];
 }
 
 function formatWord(word) {
@@ -36,8 +36,17 @@ document.getElementById("game").addEventListener("keyup", (e) => {
   const key = e.key;
   const currentLetter = document.querySelector(".letter.current");
   const expected = currentLetter.innerHTML;
+  const isLetter = key.length === 1 && key !== " ";
 
   console.log({ key, expected });
+
+  if (isLetter) {
+    if (currentLetter) {
+      addClass(currentLetter, key === expected ? "correct" : "incorrect");
+      removeClass(currentLetter, "current");
+      addClass(currentLetter.nextSibling, "current");
+    }
+  }
 });
 
 newGame();
