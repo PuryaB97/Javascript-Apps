@@ -100,3 +100,29 @@ div.word {
 .letter.incorrect {
   color: #f55;
 }
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+#cursor {
+  width: 2px;
+  height: 1.6rem;
+  background: var(--primaryColor);
+  position: fixed;
+  top: 250px;
+  left: 112px;
+  animation: blink 0.8s infinite;
+}
+
+#game:focus #cursor {
+  display: block;
+}
