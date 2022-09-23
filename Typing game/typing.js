@@ -3,6 +3,9 @@ const words =
     " "
   );
 const wordsCount = words.length;
+const gameTime = 30 * 1000;
+window.timer = null;
+window.gameStart = null;
 
 function addClass(el, name) {
   el.className += " " + name;
@@ -43,6 +46,19 @@ document.getElementById("game").addEventListener("keyup", (e) => {
   const isFirstLetter = currentLetter === currentWord.firstChild;
 
   console.log({ key, expected });
+
+  if (!window.timer && isLetter) {
+    window.timer = setInterval(() => {
+      if (!window.gameStarts) {
+        window.gameStarts = new Date().getTime();
+      }
+      const currentTime = new Date().getTime();
+      const msPassed = currentTime - windo.gameStart;
+      const sPassed = msPassed / 1000;
+      const sLeft = gameTime / 1000 - sPassed;
+      document.getElementById("info").innerHTML = sLeft + "";
+    }, 1000);
+  }
 
   if (isLetter) {
     if (currentLetter) {
