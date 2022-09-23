@@ -166,4 +166,9 @@ document.getElementById("game").addEventListener("keyup", (e) => {
     ] + "px";
 });
 
+document.getElementById("newGameBtn").addEventListener("click", () => {
+  gameOver();
+  newGame();
+});
+
 newGame();
