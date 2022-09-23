@@ -131,9 +131,6 @@ div.word {
   display: block;
 }
 
-#game.over {
-}
-
 #game.over #words {
   opacity: 0.5;
   filter: blur(0px);

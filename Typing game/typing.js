@@ -33,11 +33,33 @@ function newGame() {
   }
   addClass(document.querySelector(".word"), "current");
   addClass(document.querySelector(".letter"), "current");
+  document.getElementById("info").innerHTML = gameTime / 1000;
+}
+
+function getWpm() {
+  const words = [...document.querySelectorAll(".word")];
+  const lastTypeWord = document.querySelector(".word.current");
+  const lastTypedWordIndex = words.indexOf(lastTypeWord);
+  const typedWords = words.slice(0, lastTypedWordIndex);
+  const correctWords = typedWords.Words.filter((word) => {
+    const letters = [...word.children];
+    const incorrectLetters = letters.filter((letter) =>
+      letter.includes("incorrect")
+    );
+    const correctLetters = letters.filter((letter) =>
+      letter.className.incluedes("correct")
+    );
+    return (
+      incorrectLetters.length === 0 && correctLetters.length === letters.length
+    );
+  });
+  return (correctWords.length / gameTime) * 60000;
 }
 
 function gameOver() {
   clearInterval(window.timer);
   addClass(document.getElementById("game"), "over");
+  document.getElementById("info").innerHTML = `WPM: ${getWpm}`;
 }
 
 document.getElementById("game").addEventListener("keyup", (e) => {
@@ -67,6 +89,7 @@ document.getElementById("game").addEventListener("keyup", (e) => {
       const sLeft = gameTime / 1000 - sPassed;
       if (sLeft <= 0) {
         gameOver();
+        return;
       }
       document.getElementById("info").innerHTML = sLeft + "";
     }, 1000);
