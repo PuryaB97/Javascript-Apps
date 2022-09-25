@@ -16,7 +16,8 @@ body {
   margin: auto;
   display: flex;
   flex-wrap: wrap;
-  border: 2px solid lime;
+
+  perspective: 1000px;
 }
 
 .memory-card {
@@ -24,8 +25,10 @@ body {
   height: calc(33.333% - 10px);
   position: relative;
   margin: 5px;
-  border: 2px solid aqua;
+
   transform: scale(1);
+  transform-style: preserve-3d;
+  transition: transform 0.5s;
 }
 
 .memory-card:active {
@@ -44,7 +47,11 @@ body {
   position: absolute;
   border-radius: 5px;
   background: #1c7ccc;
-  border: 2px solid deeppink;
+  backface-visibility: hidden;
+}
+
+.front-face {
+  transform: rotateY(180deg);
 }
 
 img {
