@@ -17,6 +17,12 @@ function randomPragraph() {
 function initTyping() {
   const characters = typingText.querySelectorAll("span");
   let typedChar = inpField.value.split("")[charIndex];
+  if (characters[charIndex].innerText === typedChar) {
+    characters[charIndex].classList.add("correct");
+  } else {
+    characters[charIndex].classList.add("incorrect");
+  }
+  charIndex++;
 }
 
 randomPragraph();
