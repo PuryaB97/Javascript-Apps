@@ -17,12 +17,17 @@ function randomPragraph() {
 function initTyping() {
   const characters = typingText.querySelectorAll("span");
   let typedChar = inpField.value.split("")[charIndex];
-  if (characters[charIndex].innerText === typedChar) {
-    characters[charIndex].classList.add("correct");
+  if ((typedChar = null)) {
+    charIndex--;
+    characters[charIndex].classList.remove("correct", "incorrect");
   } else {
-    characters[charIndex].classList.add("incorrect");
+    if (characters[charIndex].innerText === typedChar) {
+      characters[charIndex].classList.add("correct");
+    } else {
+      characters[charIndex].classList.add("incorrect");
+    }
+    charIndex++;
   }
-  charIndex++;
   characters.forEach((span) => span.classList.remove("active"));
   characters[charIndex].classList.add("active");
 }
