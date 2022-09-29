@@ -4,6 +4,7 @@ timeTag = document.querySelector(".time span b");
 mistakeTag = document.querySelector(".mistake span");
 wpmTag = document.querySelector(".wpm span");
 cpmTag = document.querySelector(".cpm span");
+tryAgainBtn = document.querySelector("button");
 
 let timer,
   maxTime = 60,
@@ -12,10 +13,12 @@ let timer,
 
 function randomPragraph() {
   let randIndex = Math.floor(Math.random() * paragraphs.length);
+  typingText.innerHTML = "";
   paragraphs[randIndex].split("").forEach((span) => {
     let spanTag = `<span>${span}</span>`;
     typingText.innerHTML += spanTag;
   });
+  typingText.querySelectorAll("span")[0].classList.add("active");
 
   document.addEventListener("keydown", () => inpField.focus());
   typingText.addEventListener("click", () => inpField.focus());
@@ -56,6 +59,7 @@ function initTyping() {
     wpmTag.innerText = wpm;
     cpmTag.innerText = charIndex - mistakes;
   } else {
+    inpField.value = "";
     clearInterval(timer);
   }
 }
@@ -69,5 +73,17 @@ function initTimer() {
   }
 }
 
+function resetGame() {
+  randomPragraph();
+  inpField.value = "";
+  clearInterval(timer);
+  (timeLeft = maxTime), (charIndex = mistakes = isTyping = 0);
+  timeTag.innerHTML = timeLeft;
+  mistakeTag.innerHTML = mistakes;
+  wpmTag.innerText = 0;
+  cpmTag.innerText = 0;
+}
+
 randomPragraph();
 inpField.addEventListener("input", initTyping);
+tryAgainBtn.addEventListener("click", resetGame);
